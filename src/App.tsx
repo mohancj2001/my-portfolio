@@ -1,88 +1,35 @@
 import { useState, useEffect, useRef } from "react";
+import React from "react";
 
 const NAV_LINKS = ["About", "Education", "Skills", "Projects", "Contact"];
 
 const PROJECTS = [
-  {
-    id: 1,
-    emoji: "🏨",
-    name: "OceanBreeze Resorts",
-    desc: "M-Commerce hotel room booking system for customers & admins.",
-    category: "Hotel Booking",
-    badge: "Academic",
-    color: "#f472b6",
-    tech: ["Java", "Firebase", "GCP"],
-  },
-  {
-    id: 2,
-    emoji: "💬",
-    name: "ChatNow",
-    desc: "Real-time chat messaging application with instant delivery.",
-    category: "Messaging",
-    badge: "Academic",
-    color: "#a78bfa",
-    tech: ["React Native", "Firebase"],
-  },
-  {
-    id: 3,
-    emoji: "🏥",
-    name: "GlobeMed",
-    desc: "Healthcare management system built with OODP patterns.",
-    category: "Healthcare",
-    badge: "Academic",
-    color: "#34d399",
-    tech: ["Java", "MySQL"],
-  },
-  {
-    id: 4,
-    emoji: "🌉",
-    name: "SmartBridge",
-    desc: "Arduino IoT project with real-time remote control interface.",
-    category: "IoT",
-    badge: "Academic",
-    color: "#22d3ee",
-    tech: ["Java", "React", "Arduino"],
-  },
-  {
-    id: 5,
-    emoji: "🍬",
-    name: "CandyLand",
-    desc: "Full-stack Java e-commerce platform with modern UI.",
-    category: "E-Commerce",
-    badge: "Academic",
-    color: "#fbbf24",
-    tech: ["Java", "HTML/CSS/JS"],
-  },
-  {
-    id: 6,
-    emoji: "🛒",
-    name: "EzyShop",
-    desc: "Enterprise JavaFX retail & POS application.",
-    category: "Enterprise",
-    badge: "Ongoing",
-    color: "#fb923c",
-    tech: ["JavaFX", "MySQL", "Hibernate"],
-  },
+  { id: 1, emoji: "🏨", name: "OceanBreeze Resorts", desc: "M-Commerce hotel room booking system for customers & admins.", category: "Hotel Booking", badge: "Academic", color: "#f472b6", tech: ["Java", "Firebase", "GCP"] },
+  { id: 2, emoji: "💬", name: "ChatNow", desc: "Real-time chat messaging application with instant delivery.", category: "Messaging", badge: "Academic", color: "#a78bfa", tech: ["React Native", "Firebase"] },
+  { id: 3, emoji: "🏥", name: "GlobeMed", desc: "Healthcare management system built with OODP patterns.", category: "Healthcare", badge: "Academic", color: "#34d399", tech: ["Java", "MySQL"] },
+  { id: 4, emoji: "🌉", name: "SmartBridge", desc: "Arduino IoT project with real-time remote control interface.", category: "IoT", badge: "Academic", color: "#22d3ee", tech: ["Java", "React", "Arduino"] },
+  { id: 5, emoji: "🍬", name: "CandyLand", desc: "Full-stack Java e-commerce platform with modern UI.", category: "E-Commerce", badge: "Academic", color: "#fbbf24", tech: ["Java", "HTML/CSS/JS"] },
+  { id: 6, emoji: "🛒", name: "EzyShop", desc: "Enterprise JavaFX retail & POS application.", category: "Enterprise", badge: "Ongoing", color: "#fb923c", tech: ["JavaFX", "MySQL", "Hibernate"] },
 ];
 
-const SKILLS = {
-  Languages: { icon: "</>", items: ["Java", "JavaScript", "PHP", "HTML", "CSS"], color: "#22d3ee" },
-  Frameworks: { icon: "⚛", items: ["React", "React Native", "Flutter", "Tailwind", "JavaFX"], color: "#a78bfa" },
-  Databases: { icon: "🗄", items: ["MySQL", "MongoDB", "SQLite"], color: "#34d399" },
-  Tools: { icon: "🔧", items: ["Git", "Firebase", "GCP", "Postman"], color: "#f472b6" },
+const SKILLS: Record<string, { icon: string; items: string[]; color: string }> = {
+  Languages:    { icon: "</>", items: ["Java", "JavaScript", "PHP", "HTML", "CSS"], color: "#22d3ee" },
+  Frameworks:   { icon: "⚛",  items: ["React", "React Native", "Flutter", "Tailwind", "JavaFX"], color: "#a78bfa" },
+  Databases:    { icon: "🗄",  items: ["MySQL", "MongoDB", "SQLite"], color: "#34d399" },
+  Tools:        { icon: "🔧", items: ["Git", "Firebase", "GCP", "Postman"], color: "#f472b6" },
   Technologies: { icon: "📡", items: ["Android", "Hibernate", "REST APIs"], color: "#fbbf24" },
 };
 
 const SOFT_SKILLS = [
   { label: "Problem-solving", icon: "💡", desc: "Analytical thinker" },
-  { label: "Communication", icon: "🗣", desc: "Clear & concise" },
+  { label: "Communication",   icon: "🗣", desc: "Clear & concise" },
   { label: "Time Management", icon: "⏱", desc: "Deadline driven" },
-  { label: "Teamwork", icon: "🤝", desc: "Collaborative spirit" },
-  { label: "Adaptability", icon: "🔄", desc: "Fast learner" },
+  { label: "Teamwork",        icon: "🤝", desc: "Collaborative spirit" },
+  { label: "Adaptability",    icon: "🔄", desc: "Fast learner" },
 ];
 
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
+function useInView(threshold = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
+  const ref = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
@@ -92,7 +39,7 @@ function useInView(threshold = 0.15) {
   return [ref, inView];
 }
 
-function FadeIn({ children, delay = 0, className = "" }) {
+function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const [ref, inView] = useInView();
   return (
     <div
@@ -114,7 +61,7 @@ export default function Portfolio() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSkill, setActiveSkill] = useState("Languages");
-  const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -122,7 +69,7 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id) => {
+  const scrollTo = (id: string) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
   };
@@ -257,7 +204,6 @@ export default function Portfolio() {
         }
 
         .hero-text { text-align: left; align-items: flex-start; }
-
         .hero-br { display: inline; }
 
         @media (max-width: 640px) {
@@ -315,7 +261,6 @@ export default function Portfolio() {
         .nav-link:hover, .nav-link.active { color: #e2e8f0; }
       `}</style>
 
-   
       <div className="noise" />
 
       <nav style={{
@@ -331,7 +276,7 @@ export default function Portfolio() {
             <span style={{ background: "linear-gradient(135deg,#6366f1,#ec4899)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>MC</span>
             <span style={{ color: "#334155", marginLeft: 2 }}>/</span>
           </div>
-        
+
           <div style={{ display: "flex", gap: 32, alignItems: "center" }} className="desktop-nav">
             {NAV_LINKS.map(l => (
               <span key={l} className={`nav-link ${activeNav === l ? "active" : ""}`} onClick={() => { scrollTo(l); setActiveNav(l); }}>{l}</span>
@@ -340,7 +285,7 @@ export default function Portfolio() {
               Hire Me
             </button>
           </div>
-    
+
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ background: "none", border: "none", cursor: "pointer", color: "#e2e8f0", fontSize: 24, display: "none" }} className="mobile-menu-btn">
             {mobileMenuOpen ? "✕" : "☰"}
           </button>
@@ -364,7 +309,6 @@ export default function Portfolio() {
 
       {/* HERO */}
       <section id="about" className="grid-bg hero-gradient" style={{ minHeight: "100vh", width: "100%", display: "flex", alignItems: "center", paddingTop: 80, position: "relative", overflow: "hidden" }}>
-        {/* Decorative orbs */}
         <div style={{ position: "absolute", top: "10%", right: "5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "10%", left: "5%", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
 
@@ -397,39 +341,21 @@ export default function Portfolio() {
             </div>
             <div className="hero-stats" style={{ display: "flex", gap: 32, marginTop: 48, flexWrap: "wrap" }}>
               {[["20+", "Projects"], ["3+", "Years Learning"]].map(([n, l]) => (
-  <div key={l}>
-    <div style={{
-      fontSize: "clamp(1.4rem, 3vw, 2rem)",
-      fontWeight: 800,
-      background: "linear-gradient(135deg,#6366f1,#ec4899)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      paddingBottom: "4px",  
-      lineHeight: 1.2,      
-    }}>{n}</div>
-    <div style={{ fontSize: 12, color: "#475569", letterSpacing: "0.05em", marginTop: 2 }}>{l}</div>
-  </div>
-))}
+                <div key={l}>
+                  <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 800, background: "linear-gradient(135deg,#6366f1,#ec4899)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", paddingBottom: "4px", lineHeight: 1.2 }}>{n}</div>
+                  <div style={{ fontSize: 12, color: "#475569", letterSpacing: "0.05em", marginTop: 2 }}>{l}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-       
           <div className="float-anim hero-avatar" style={{ display: "flex", justifyContent: "center", flexShrink: 0 }}>
             <div className="avatar-ring">
               <img
-  src="src\assets\IMG_2013.HEIC"
-  alt="Mohan Chanaka"
-  style={{
-    width: "clamp(220px, 35vw, 420px)",
-    height: "clamp(220px, 35vw, 420px)",
-    borderRadius: "50%",
-    objectFit: "cover",
-    objectPosition: "center 30%", 
-    position: "relative",
-    zIndex: 1,
-    display: "block",
-  }}
-/>
+                src="src/assets/IMG_2013.HEIC"
+                alt="Mohan Chanaka"
+                style={{ width: "clamp(220px, 35vw, 420px)", height: "clamp(220px, 35vw, 420px)", borderRadius: "50%", objectFit: "cover", objectPosition: "center 30%", position: "relative", zIndex: 1, display: "block" }}
+              />
             </div>
           </div>
         </div>
@@ -440,7 +366,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-   
+      {/* EDUCATION */}
       <section id="education" style={{ padding: "100px 24px", position: "relative" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <FadeIn>
@@ -478,6 +404,7 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* SKILLS */}
       <section id="skills" style={{ padding: "100px 24px", background: "rgba(255,255,255,0.01)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeIn>
@@ -510,7 +437,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                {SKILLS[activeSkill].items.map((item, i) => (
+                {SKILLS[activeSkill].items.map((item) => (
                   <span key={item} className="pill" style={{ background: `${SKILLS[activeSkill].color}12`, border: `1px solid ${SKILLS[activeSkill].color}30`, color: SKILLS[activeSkill].color, padding: "8px 16px", fontSize: 13, borderRadius: 8, fontWeight: 500, letterSpacing: "0.02em", textTransform: "none" }}>
                     {item}
                   </span>
@@ -522,7 +449,7 @@ export default function Portfolio() {
           <FadeIn delay={0.3}>
             <p className="section-label" style={{ marginBottom: 20, textAlign: "center" }}>Soft Skills</p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
-              {SOFT_SKILLS.map((s, i) => (
+              {SOFT_SKILLS.map((s) => (
                 <div key={s.label} className="glass glass-hover" style={{ borderRadius: 14, padding: "20px", textAlign: "center", transition: "all 0.3s ease", cursor: "default" }}>
                   <div style={{ fontSize: 26, marginBottom: 8 }}>{s.icon}</div>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "#e2e8f0", marginBottom: 4 }}>{s.label}</div>
@@ -534,6 +461,7 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* PROJECTS */}
       <section id="projects" style={{ padding: "100px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
@@ -562,17 +490,12 @@ export default function Portfolio() {
                   }}
                 >
                   <div className="project-glow" style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${p.color}, transparent)`, opacity: hoveredProject === p.id ? 1 : 0, transition: "opacity 0.3s" }} />
-
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                     <div style={{ fontSize: 36 }}>{p.emoji}</div>
-                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                      <span className="pill" style={{ background: `${p.color}18`, border: `1px solid ${p.color}30`, color: p.color, padding: "4px 10px" }}>{p.badge}</span>
-                    </div>
+                    <span className="pill" style={{ background: `${p.color}18`, border: `1px solid ${p.color}30`, color: p.color, padding: "4px 10px" }}>{p.badge}</span>
                   </div>
-
                   <h3 style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", fontWeight: 700, color: "#e2e8f0", marginBottom: 8 }}>{p.name}</h3>
                   <p style={{ color: "#475569", fontSize: 13.5, lineHeight: 1.65, marginBottom: 20 }}>{p.desc}</p>
-
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {p.tech.map(t => (
                       <span key={t} style={{ fontSize: 11, color: "#64748b", background: "rgba(255,255,255,0.04)", padding: "4px 10px", borderRadius: 6, border: "1px solid rgba(255,255,255,0.06)", fontFamily: "'Space Mono', monospace" }}>{t}</span>
@@ -586,6 +509,7 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* CONTACT */}
       <section id="contact" style={{ padding: "100px 24px" }}>
         <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <FadeIn>
