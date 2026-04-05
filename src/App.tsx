@@ -340,7 +340,7 @@ export default function Portfolio() {
               </button>
             </div>
             <div className="hero-stats" style={{ display: "flex", gap: 32, marginTop: 48, flexWrap: "wrap" }}>
-              {[["20+", "Projects"], ["3+", "Years Learning"]].map(([n, l]) => (
+              {[["20+", "Projects"], ["3+", "Years Experience"]].map(([n, l]) => (
                 <div key={l}>
                   <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 800, background: "linear-gradient(135deg,#6366f1,#ec4899)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", paddingBottom: "4px", lineHeight: 1.2 }}>{n}</div>
                   <div style={{ fontSize: 12, color: "#475569", letterSpacing: "0.05em", marginTop: 2 }}>{l}</div>
