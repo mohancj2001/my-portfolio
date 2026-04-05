@@ -366,7 +366,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* EDUCATION */}
       <section id="education" style={{ padding: "100px 24px", position: "relative" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <FadeIn>
@@ -382,7 +381,7 @@ export default function Portfolio() {
             <div style={{ position: "absolute", left: 5, top: 0, bottom: 0, width: 1, background: "linear-gradient(to bottom, #6366f1, rgba(99,102,241,0.1))" }} />
 
             {[
-              { status: "Currently Pursuing", color: "#6366f1", year: "2024 – Present", degree: "Bsc in Software Engineering", school: "Birmingham City University", note: "Awarded through Java Institute for Advanced Technology" },
+              { status: "Currently Pursuing", color: "#6366f1", year: "2024 – Present", degree: " BSc (Hons) Software Engineering", school: "Birmingham City University", note: "Awarded through Java Institute for Advanced Technology" },
               { status: "Completed", color: "#34d399", year: "2022", degree: "Higher National Diploma in Software Engineering", school: "Java Institute For Advanced Technology", note: null },
             ].map((e, i) => (
               <FadeIn key={i} delay={i * 0.15}>
