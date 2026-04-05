@@ -352,7 +352,7 @@ export default function Portfolio() {
           <div className="float-anim hero-avatar" style={{ display: "flex", justifyContent: "center", flexShrink: 0 }}>
             <div className="avatar-ring">
               <img
-                src="src/assets/IMG_2013.jpg"
+                src="src/assets/img_2013.jpg"
                 alt="Mohan Chanaka"
                 style={{ width: "clamp(220px, 35vw, 420px)", height: "clamp(220px, 35vw, 420px)", borderRadius: "50%", objectFit: "cover", objectPosition: "center 30%", position: "relative", zIndex: 1, display: "block" }}
               />
