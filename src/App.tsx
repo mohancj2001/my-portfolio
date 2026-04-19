@@ -307,7 +307,7 @@ export default function Portfolio() {
         }
       `}</style>
 
-      {/* HERO */}
+
       <section id="about" className="grid-bg hero-gradient" style={{ minHeight: "100vh", width: "100%", display: "flex", alignItems: "center", paddingTop: 80, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "10%", right: "5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "10%", left: "5%", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
@@ -340,7 +340,7 @@ export default function Portfolio() {
               </button>
             </div>
             <div className="hero-stats" style={{ display: "flex", gap: 32, marginTop: 48, flexWrap: "wrap" }}>
-              {[["20+", "Projects"], ["3+", "Years Experience"]].map(([n, l]) => (
+              {[["15+", "Projects"], ["3+", "Years Experience"]].map(([n, l]) => (
                 <div key={l}>
                   <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 800, background: "linear-gradient(135deg,#6366f1,#ec4899)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", paddingBottom: "4px", lineHeight: 1.2 }}>{n}</div>
                   <div style={{ fontSize: 12, color: "#475569", letterSpacing: "0.05em", marginTop: 2 }}>{l}</div>
@@ -381,7 +381,7 @@ export default function Portfolio() {
             <div style={{ position: "absolute", left: 5, top: 0, bottom: 0, width: 1, background: "linear-gradient(to bottom, #6366f1, rgba(99,102,241,0.1))" }} />
 
             {[
-              { status: "Currently Pursuing", color: "#6366f1", year: "2024 – Present", degree: " BSc (Hons) Software Engineering", school: "Birmingham City University", note: "Awarded through Java Institute for Advanced Technology" },
+              { status: "Currently Pursuing", color: "#6366f1", year: "2024 – Present", degree: " BEng (Hons) Software Engineering", school: "IIC University of Technology", note: "Awarded through Java Institute for Advanced Technology" },
               { status: "Completed", color: "#34d399", year: "2022", degree: "Higher National Diploma in Software Engineering", school: "Java Institute For Advanced Technology", note: null },
             ].map((e, i) => (
               <FadeIn key={i} delay={i * 0.15}>
@@ -460,7 +460,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* PROJECTS */}
+
       <section id="projects" style={{ padding: "100px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
@@ -508,7 +508,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* CONTACT */}
+    
       <section id="contact" style={{ padding: "100px 24px" }}>
         <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <FadeIn>
