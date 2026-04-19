@@ -14,7 +14,7 @@ const PROJECTS = [
 
 const SKILLS: Record<string, { icon: string; items: string[]; color: string }> = {
   Languages:    { icon: "</>", items: ["Java", "JavaScript", "PHP", "HTML", "CSS"], color: "#22d3ee" },
-  Frameworks:   { icon: "⚛",  items: ["React", "React Native", "Flutter", "Tailwind", "JavaFX"], color: "#a78bfa" },
+  Frameworks:   { icon: "⚛",  items: ["React", "React Native", "Tailwind", "JavaFX"], color: "#a78bfa" },
   Databases:    { icon: "🗄",  items: ["MySQL", "MongoDB", "SQLite"], color: "#34d399" },
   Tools:        { icon: "🔧", items: ["Git", "Firebase", "GCP", "Postman"], color: "#f472b6" },
   Technologies: { icon: "📡", items: ["Android", "Hibernate", "REST APIs"], color: "#fbbf24" },
