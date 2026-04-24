@@ -381,7 +381,7 @@ export default function Portfolio() {
             <div style={{ position: "absolute", left: 5, top: 0, bottom: 0, width: 1, background: "linear-gradient(to bottom, #6366f1, rgba(99,102,241,0.1))" }} />
 
             {[
-              { status: "Completed", color: "#6366f1", year: "2024 – 2026", degree: " BSc (Hons) Software Engineering", school: "Birmingham City University\n[Second Class (Division II)]", note: null },
+              { status: "Completed", color: "#6366f1", year: "2024 – 2026", degree: " BSc (Hons) Software Engineering", school: "Birmingham City University", note: "Second Class (Division II)" },
               { status: "Completed", color: "#34d399", year: "2022", degree: "Higher National Diploma in Software Engineering", school: "Java Institute For Advanced Technology", note: null },
             ].map((e, i) => (
               <FadeIn key={i} delay={i * 0.15}>
