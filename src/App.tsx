@@ -29,7 +29,9 @@ const SOFT_SKILLS = [
   { label: "Adaptability", icon: "🔄", desc: "Fast learner" },
 ];
 
-const EDUCATION = [
+type Edu = { status: string; year: string; degree: string; school: string; note: string | null };
+
+const EDUCATION: Edu[] = [
   { status: "Completed", year: "2024 – 2026", degree: "BSc (Hons) Software Engineering", school: "Birmingham City University", note: "Second Class (Division II)" },
   { status: "Completed", year: "2022", degree: "Higher National Diploma in Software Engineering", school: "Java Institute For Advanced Technology", note: null },
 ];
